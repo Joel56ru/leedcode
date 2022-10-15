@@ -20,7 +20,7 @@ func TestTwoSum(t *testing.T) {
 		for j, num := range pair.result {
 			if num != k[j] {
 				t.Errorf("#%d Not Valid %v. FuncRes: %v", i, pair, k)
-				continue
+				break
 			}
 		}
 	}
