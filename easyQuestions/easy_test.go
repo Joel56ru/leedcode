@@ -25,3 +25,46 @@ func TestTwoSum(t *testing.T) {
 		}
 	}
 }
+
+type node struct {
+	node   *ListNode
+	result *ListNode
+}
+
+// {&ListNode{1, nil}
+var t2 = []node{
+	{&ListNode{1, &ListNode{1, &ListNode{2, nil}}}, &ListNode{1, &ListNode{2, nil}}},
+}
+
+func TestDeleteDuplicates(t *testing.T) {
+	for i, pair := range t2 {
+		nodeRes := deleteDuplicates(pair.node)
+		for nodeRes != nil || pair.result != nil {
+			if nodeRes.Val != pair.result.Val {
+				t.Errorf("#%d Not Valid %v. FuncRes: %v", i, nodeRes.Val, pair.result.Val)
+			}
+			nodeRes = nodeRes.Next
+			pair.result = pair.result.Next
+		}
+	}
+}
+
+type stringBool struct {
+	s      string
+	result bool
+}
+
+var t3 = []stringBool{
+	{"thequickbrownfoxjumpsoverthelazydog", true},
+	{"leetcode", false},
+	{"qwertyuiopasdfghjklzxcvbnm", true},
+}
+
+func TestCheckIfPangram(t *testing.T) {
+	for i, pair := range t3 {
+		k := checkIfPangram(pair.s)
+		if k != pair.result {
+			t.Errorf("#%d Not Valid %v. FuncRes: %v", i, pair, k)
+		}
+	}
+}
